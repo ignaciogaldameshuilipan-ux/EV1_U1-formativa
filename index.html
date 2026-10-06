@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscripción a taller</title>
+  <style>
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background-color: #ffffff;
+      color: #111;
+      margin: 0;
+      padding: 60px 20px;
+    }
+
+    .caja {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: normal;
+      margin: 0 0 6px 0;
+    }
+
+    .subtitulo {
+      font-size: 14px;
+      color: #777;
+      margin: 0 0 32px 0;
+    }
+
+    .linea {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 22px;
+      padding: 6px 0;
+      border: none;
+      border-bottom: 1px solid #aaa;
+      background: transparent;
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    .linea:focus {
+      outline: none;
+      border-bottom: 2px solid #1a4fd6;
+    }
+
+    .boton {
+      margin-top: 8px;
+      padding: 10px 28px;
+      background-color: transparent;
+      color: #111;
+      border: 1px solid #111;
+      font-family: inherit;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .boton:hover {
+      background-color: #111;
+      color: #fff;
+    }
+
+    #resultado {
+      margin-top: 36px;
+      padding: 14px 18px;
+      border-left: 4px solid #1a4fd6;
+      background-color: #f1f5ff;
+      font-size: 15px;
+      line-height: 1.6;
+      display: none;
+    }
+
+    #resultado p {
+      margin: 2px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="caja">
+    <h1>Inscripción a taller</h1>
+    <p class="subtitulo">Completa tus datos para reservar un cupo.</p>
+
+    <input id="nombre" class="linea" type="text" placeholder="Nombre" required>
+    <input id="correo" class="linea" type="email" placeholder="Correo" required>
+    <input id="edad" class="linea" type="number" placeholder="Edad" required>
+    <input id="taller" class="linea" type="text" placeholder="Taller que te interesa" required>
+
+    <button class="boton" onclick="registrar()">Inscribirme</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function registrar() {
+      var nombre = document.getElementById("nombre").value;
+      var correo = document.getElementById("correo").value;
+      var edad = document.getElementById("edad").value;
+      var taller = document.getElementById("taller").value;
+      var resultado = document.getElementById("resultado");
+
+      resultado.style.display = "block";
+
+      if (nombre === "" || correo === "" || edad === "" || taller === "") {
+        resultado.style.borderLeftColor = "#c62828";
+        resultado.style.backgroundColor = "#fff3f3";
+        resultado.innerHTML = "Faltan campos por completar.";
+        return;
+      }
+
+      resultado.style.borderLeftColor = "#1a4fd6";
+      resultado.style.backgroundColor = "#f1f5ff";
+      resultado.innerHTML =
+        "<strong>Datos capturados con éxito.</strong>" +
+        "<p>Nombre: " + nombre + "</p>" +
+        "<p>Correo: " + correo + "</p>" +
+        "<p>Edad: " + edad + "</p>" +
+        "<p>Taller: " + taller + "</p>";
+    }
+  </script>
+
+</body>
+</html>
